@@ -1,0 +1,26 @@
+def calculate_wacc(cost_of_equity, cost_of_debt, equity_weight, debt_weight, tax_rate):
+    wacc = (equity_weight * cost_of_equity) + (debt_weight * cost_of_debt * (1 - tax_rate))
+    return wacc
+
+def main():
+    # User input for WACC calculation
+    cost_of_equity = float(input("Enter the cost of equity (Ke) as a decimal: "))
+    cost_of_debt = float(input("Enter the cost of debt (Kd) as a decimal: "))
+    equity_weight = float(input("Enter the weight of equity (E/V) as a decimal: "))
+    debt_weight = float(input("Enter the weight of debt (D/V) as a decimal: "))
+    tax_rate = float(input("Enter the corporate tax rate (Tc) as a decimal: "))
+
+    # Calculate WACC
+    wacc = calculate_wacc(cost_of_equity, cost_of_debt, equity_weight, debt_weight, tax_rate)
+
+    # Output the result
+    print(f"\nWeighted Average Cost of Capital (WACC): {wacc:.2%}")
+
+    # Decide between equity and debt financing
+    if cost_of_equity < cost_of_debt:
+        print("Equity financing may be preferable.")
+    else:
+        print("Debt financing may be preferable.")
+
+if __name__ == "__main__":
+    main()
